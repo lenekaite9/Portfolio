@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Céleste Dzalamou — Technicien Électricien</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#f59e0b;--gold-dim:#b45309;--gold-light:#fcd34d;
+  --bg:#0b0b0b;--bg2:#141414;--bg3:#1a1a1a;--card:#161616;
+  --border:rgba(245,158,11,0.18);--text:#f0ece4;--muted:#8a8a8a;
+  --tr:.28s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(245,158,11,0.08) 0%,transparent 70%);pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;bottom:-150px;left:-150px;width:400px;height:400px;background:radial-gradient(circle,rgba(245,158,11,0.06) 0%,transparent 70%);pointer-events:none;z-index:0}
+.page{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:48px 24px;display:flex;flex-direction:column;gap:28px}
+
+/* ABOUT */
+.about-card{background:linear-gradient(135deg,#1c1c1c 0%,#141414 100%);border:1px solid var(--border);border-radius:20px;padding:28px 32px;display:flex;align-items:center;gap:28px;position:relative;overflow:hidden;transition:border-color var(--tr),transform var(--tr)}
+.about-card::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(245,158,11,0.15) 0%,transparent 70%)}
+.about-card:hover{border-color:rgba(245,158,11,0.45);transform:translateY(-3px)}
+.avatar{flex-shrink:0;width:92px;height:92px;border-radius:50%;border:3px solid var(--gold-dim);outline:5px solid rgba(245,158,11,0.15);overflow:hidden;transition:border-color var(--tr),outline-color var(--tr)}
+.about-card:hover .avatar{border-color:var(--gold);outline-color:rgba(245,158,11,0.3)}
+.avatar img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.about-text .label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.about-text h1{font-family:'Bebas Neue',sans-serif;font-size:44px;line-height:1;letter-spacing:2px;color:var(--text)}
+.about-text h1 span{color:var(--gold)}
+.about-text p{margin-top:10px;font-size:14px;color:var(--muted);line-height:1.6;max-width:520px}
+.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.badge{display:inline-flex;align-items:center;gap:5px;border-radius:100px;padding:3px 10px;font-size:11px;letter-spacing:0.8px}
+.badge.search{background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.3);color:var(--gold)}
+.badge.search::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+.badge.lang{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:#ccc}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+
+/* SECTION */
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:var(--text);text-align:center;position:relative;padding-bottom:10px;margin-bottom:20px}
+.section-title::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:50px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px 28px;transition:border-color var(--tr),transform var(--tr)}
+.section:hover{border-color:rgba(245,158,11,0.38);transform:translateY(-3px)}
+.section .section-title{text-align:left}
+.section .section-title::after{left:0;transform:none}
+
+/* SOFTWARE SKILLS */
+.skills-grid{display:flex;justify-content:center;flex-wrap:wrap;gap:20px;margin-top:6px}
+.skill-item{display:flex;flex-direction:column;align-items:center;gap:8px;cursor:default}
+.skill-circle{width:76px;height:76px;border-radius:50%;border:2px solid var(--gold-dim);background:var(--bg3);display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:17px;font-weight:700;transition:transform .3s,border-color .3s,background .3s;position:relative}
+.skill-circle::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid transparent;border-top-color:var(--gold);animation:spin 4s linear infinite}
+.skill-circle:hover{transform:scale(1.12);border-color:var(--gold);background:#222}
+.skill-item:hover .skill-label{color:var(--gold-light)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.skill-circle.tia{color:#009999}.skill-circle.sw{color:#0098d4}.skill-circle.f3{color:#ee7a1f}
+.skill-circle.up{color:#ff9a00}.skill-circle.py{color:#4da8ff}.skill-circle.bl{color:#ea7600}.skill-circle.un{color:#333;background:#c0c0c0}
+.skill-label{font-size:10.5px;color:var(--muted);text-align:center;letter-spacing:0.3px;line-height:1.3;transition:color var(--tr)}
+
+/* TWO COL */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+
+/* TECH BOX */
+.tech-box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;transition:border-color var(--tr),transform var(--tr)}
+.tech-box:hover{border-color:rgba(245,158,11,0.38);transform:translateY(-3px)}
+.tech-box h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--text);margin-bottom:14px}
+.tag-group{margin-bottom:10px}
+.tag-group .cat{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-dim);margin-bottom:6px}
+.tech-tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:7px;padding:4px 10px;font-size:11.5px;color:var(--gold-light);letter-spacing:0.3px;cursor:default;transition:background .2s,border-color .2s,transform .15s,color .2s}
+.tag:hover{background:rgba(245,158,11,0.2);border-color:rgba(245,158,11,0.55);transform:scale(1.06);color:#fff}
+.tag.muted{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.1);color:var(--muted)}
+.tag.muted:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.28);transform:scale(1.06);color:var(--text)}
+
+/* CONTACT */
+.contact-list{display:flex;flex-direction:column;gap:9px;margin-top:4px}
+.contact-item{display:flex;align-items:center;gap:11px;font-size:13px;color:var(--text);cursor:default;transition:transform var(--tr),color var(--tr);border-radius:8px;padding:4px 6px;margin:-4px -6px}
+.contact-item:hover{transform:translateX(8px);color:var(--gold-light)}
+.contact-icon{width:30px;height:30px;border-radius:7px;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;transition:background var(--tr),border-color var(--tr)}
+.contact-item:hover .contact-icon{background:rgba(245,158,11,0.22);border-color:rgba(245,158,11,0.55)}
+.available-badge{border:1.5px dashed var(--gold-dim);border-radius:11px;padding:12px 18px;display:flex;align-items:center;gap:12px;margin-top:14px;background:rgba(245,158,11,0.04);transition:border-color var(--tr),background var(--tr),transform var(--tr);cursor:default}
+.available-badge:hover{border-color:var(--gold);background:rgba(245,158,11,0.1);transform:translateY(-2px)}
+.available-badge .ai{width:38px;height:38px;border-radius:50%;background:rgba(245,158,11,0.15);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.available-badge strong{font-size:14px;font-weight:600;color:var(--gold);display:block}
+.available-badge span{font-size:11px;color:var(--muted)}
+
+/* LANG */
+.lang-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
+.lang-item{flex:1;min-width:120px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px 14px;cursor:default;transition:border-color var(--tr),transform var(--tr),background var(--tr)}
+.lang-item:hover{border-color:rgba(245,158,11,0.45);transform:translateY(-3px);background:#202020}
+.lang-name{font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px}
+.lang-level{font-size:10px;color:var(--muted);margin-bottom:6px}
+.lang-bar{height:3px;border-radius:2px;background:rgba(255,255,255,0.08);overflow:hidden}
+.lang-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--gold-dim),var(--gold))}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:22px;display:flex;flex-direction:column}
+.timeline::before{content:'';position:absolute;left:5px;top:10px;bottom:10px;width:2px;background:linear-gradient(to bottom,var(--gold),var(--bg))}
+.tl-item{position:relative;padding:8px 0 22px 18px;border-radius:10px;cursor:default;transition:background var(--tr),padding-left var(--tr)}
+.tl-item::before{content:'';position:absolute;left:-17px;top:14px;width:12px;height:12px;border-radius:50%;background:var(--gold);border:2px solid var(--bg);box-shadow:0 0 0 3px rgba(245,158,11,0.2);transition:box-shadow var(--tr),background var(--tr)}
+.tl-item:hover{background:rgba(245,158,11,0.04);padding-left:24px}
+.tl-item:hover::before{box-shadow:0 0 0 6px rgba(245,158,11,0.18);background:var(--gold-light)}
+.tl-item:hover .tl-company{color:var(--gold)}
+.tl-item:hover .tl-bullets li{color:#b0a898}
+.tl-item.current::before{animation:pulse-dot 2s infinite}
+@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 3px rgba(245,158,11,0.2)}50%{box-shadow:0 0 0 7px rgba(245,158,11,0.08)}}
+.tl-item:last-child{padding-bottom:0}
+.tl-header{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap}
+.tl-left{flex:1}
+.tl-top{display:flex;align-items:center;gap:10px;margin-bottom:2px}
+.tl-ico{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.05);transition:background var(--tr),border-color var(--tr),transform var(--tr)}
+.tl-item:hover .tl-ico{border-color:rgba(245,158,11,0.35);background:rgba(245,158,11,0.1);transform:scale(1.12)}
+.tl-company{font-size:14.5px;font-weight:600;color:var(--text);transition:color var(--tr)}
+.tl-role{font-size:12px;color:var(--gold);margin-top:1px}
+.tl-sector{display:inline-flex;align-items:center;gap:4px;font-size:10px;color:var(--muted);margin-top:4px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:4px;padding:2px 7px;letter-spacing:0.5px}
+.tl-meta{display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex-shrink:0}
+.tl-date{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);white-space:nowrap}
+.contract-chip{font-size:9.5px;padding:2px 7px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--muted);white-space:nowrap}
+.contract-chip.interim{background:rgba(245,158,11,0.07);border-color:rgba(245,158,11,0.18);color:var(--gold-dim)}
+.contract-chip.cdic{background:rgba(77,168,255,0.07);border-color:rgba(77,168,255,0.2);color:#4da8ff}
+.tl-bullets{margin-top:7px;list-style:none;display:flex;flex-direction:column;gap:2px}
+.tl-bullets li{font-size:12px;color:var(--muted);padding-left:11px;position:relative;line-height:1.5;transition:color var(--tr)}
+.tl-bullets li::before{content:'·';position:absolute;left:0;color:var(--gold-dim);font-size:16px;line-height:1.1}
+
+/* FORMATION */
+.formation-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.formation-card{background:var(--bg3);border:1px solid var(--border);border-radius:11px;padding:15px 17px;cursor:default;transition:border-color var(--tr),transform var(--tr),background var(--tr)}
+.formation-card:hover{border-color:rgba(245,158,11,0.45);transform:translateY(-3px);background:#1e1e1e}
+.formation-card .year{font-family:'Space Mono',monospace;font-size:10px;color:var(--gold);margin-bottom:5px}
+.formation-card strong{font-size:13px;font-weight:600;color:var(--text);display:block}
+.formation-card span{font-size:11.5px;color:var(--muted);margin-top:2px;display:block}
+
+/* CERTS */
+.certs-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:4px}
+.cert-chip{display:flex;align-items:center;gap:7px;background:var(--bg3);border:1px solid var(--border);border-radius:100px;padding:7px 12px;font-size:11.5px;color:var(--text);cursor:default;transition:border-color var(--tr),transform var(--tr),background var(--tr),color var(--tr)}
+.cert-chip:hover{border-color:rgba(245,158,11,0.45);transform:scale(1.05);background:#1e1e1e;color:var(--gold-light)}
+a.cert-chip{cursor:pointer;text-decoration:none}
+a.cert-chip:hover{border-color:rgba(245,158,11,0.7);background:rgba(245,158,11,0.1);color:var(--gold)}
+.cert-link-ico{font-size:10px;opacity:0.45;transition:opacity var(--tr),transform var(--tr)}
+a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
+.cert-chip .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.cert-chip .dot.green{background:#22c55e}
+
+/* HOBBIES */
+.hobbies-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:4px}
+.hobby{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:9px 14px;text-align:center;font-size:11.5px;color:var(--muted);cursor:default;transition:background var(--tr),border-color var(--tr),transform var(--tr),color var(--tr)}
+.hobby:hover{background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.35);transform:translateY(-4px) scale(1.06);color:var(--text)}
+.hobby .ico{font-size:18px;display:block;margin-bottom:3px}
+
+/* STRENGTHS */
+.strengths-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.strength{background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.12);border-radius:11px;padding:13px 10px;text-align:center;font-size:11px;color:var(--muted);line-height:1.4;cursor:default;transition:background var(--tr),border-color var(--tr),transform var(--tr),color var(--tr)}
+.strength:hover{background:rgba(245,158,11,0.14);border-color:rgba(245,158,11,0.4);transform:translateY(-4px);color:var(--text)}
+.strength .ico{font-size:20px;display:block;margin-bottom:5px}
+
+/* QUOTE */
+.footer-quote{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:20px 26px;display:flex;align-items:flex-start;gap:14px;position:relative;overflow:hidden;transition:border-color var(--tr),transform var(--tr)}
+.footer-quote:hover{border-color:rgba(245,158,11,0.38);transform:translateY(-3px)}
+.footer-quote::before{content:'"';position:absolute;right:16px;top:-10px;font-size:90px;font-family:'Bebas Neue',sans-serif;color:rgba(245,158,11,0.07);line-height:1}
+.quote-icon{width:42px;height:42px;border-radius:10px;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:19px}
+.footer-quote p{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(max-width:600px){.projects-grid{grid-template-columns:1fr}}
+.proj-card{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px;text-decoration:none;color:var(--text);cursor:pointer;transition:border-color var(--tr),transform var(--tr),background var(--tr)}
+.proj-card:hover{border-color:rgba(245,158,11,0.5);transform:translateY(-5px);background:#1d1d1d}
+.proj-hero{grid-column:1/-1}
+.proj-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.proj-btn{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;padding:7px 14px;border-radius:8px;text-decoration:none;cursor:pointer;transition:background var(--tr),border-color var(--tr),transform var(--tr)}
+.proj-btn.doc{background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);color:var(--gold)}
+.proj-btn.doc:hover{background:rgba(245,158,11,0.2);border-color:var(--gold);transform:translateY(-1px)}
+.proj-btn.yt{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:#f87171}
+.proj-btn.yt:hover{background:rgba(239,68,68,0.2);border-color:#f87171;transform:translateY(-1px)}
+.proj-btn.disabled{opacity:0.45;cursor:not-allowed}
+.proj-btn.disabled:hover{transform:none}
+.proj-img{width:100%;height:160px;object-fit:cover;border-radius:8px;margin-top:4px}
+.proj-img-fallback{justify-content:center;padding:20px 0}
+.proj-yt-card .proj-actions{margin-top:4px}
+.yt-embed-wrap{position:relative;width:100%;padding-bottom:52%;border-radius:10px;overflow:hidden;background:#000;margin-top:6px}
+.yt-embed-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;border-radius:10px}
+.proj-type.formation{background:rgba(52,211,153,0.12);border:1px solid rgba(52,211,153,0.25);color:#34d399}
+.proj-header{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.proj-ico{font-size:22px;line-height:1}
+.proj-type{font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;border-radius:4px;font-weight:600;white-space:nowrap}
+.proj-type.etude{background:rgba(99,179,237,0.12);border:1px solid rgba(99,179,237,0.25);color:#63b3ed}
+.proj-type.naval{background:rgba(129,140,248,0.12);border:1px solid rgba(129,140,248,0.25);color:#818cf8}
+.proj-type.energie{background:rgba(52,211,153,0.12);border:1px solid rgba(52,211,153,0.25);color:#34d399}
+.proj-type.aeronautique{background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.25);color:#fbbf24}
+.proj-type.ratp{background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.25);color:#f87171}
+.proj-title{font-size:13px;font-weight:600;color:var(--text);line-height:1.4;transition:color var(--tr)}
+.proj-card:hover .proj-title{color:var(--gold-light)}
+.proj-desc{font-size:11.5px;color:var(--muted);line-height:1.6;flex:1}
+.proj-tags{display:flex;flex-wrap:wrap;gap:5px}
+.proj-tags span{font-size:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:2px 7px;color:var(--muted)}
+.proj-card:hover .proj-tags span{border-color:rgba(245,158,11,0.2);background:rgba(245,158,11,0.06);color:#c8a96e}
+.proj-link{font-size:11px;color:var(--gold-dim);margin-top:2px;transition:color var(--tr),letter-spacing var(--tr)}
+.proj-card:hover .proj-link{color:var(--gold);letter-spacing:0.5px}
+
+/* FADE UP */
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:640px){
+  .two-col{grid-template-columns:1fr}
+  .about-card{flex-direction:column;text-align:center}
+  .strengths-row{grid-template-columns:repeat(2,1fr)}
+  .formation-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ABOUT ME -->
+  <div class="about-card fade-up">
+    <div class="avatar"><img src="data:image/jpeg;base64,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" alt="Céleste Dzalamou"></div>
+    <div class="about-text">
+      <div class="label">About Me.</div>
+      <h1>Céleste <span>Dzalamou</span></h1>
+      <p>Technicien électricien polyvalent avec expérience terrain en électricité industrielle et navale, automatisme et conception mécanique.</p>
+      <div class="badge-row">
+        <div class="badge search">EN RECHERCHE D'ALTERNANCE · SEPT. 2026</div>
+        <div class="badge lang">🇬🇧 English — Courant</div>
+        <div class="badge lang">🇫🇷 Français — Natif</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOFTWARE SKILLS -->
+  <div class="section fade-up">
+    <div class="section-title">Outils &amp; Logiciels</div>
+    <div class="skills-grid">
+      <div class="skill-item"><div class="skill-circle tia">TIA</div><div class="skill-label">Siemens<br>TIA Portal</div></div>
+      <div class="skill-item"><div class="skill-circle sw">SW</div><div class="skill-label">Solid<br>Works</div></div>
+      <div class="skill-item"><div class="skill-circle f3">F3</div><div class="skill-label">Fusion<br>360</div></div>
+      <div class="skill-item"><div class="skill-circle up">UP</div><div class="skill-label">Unity Pro<br>Schneider</div></div>
+      <div class="skill-item"><div class="skill-circle py">Py</div><div class="skill-label">Python<br>HTML/CSS</div></div>
+      <div class="skill-item"><div class="skill-circle bl">BL</div><div class="skill-label">Blender<br>3D</div></div>
+      <div class="skill-item"><div class="skill-circle un">Un</div><div class="skill-label">Unity<br>Jeux vidéo</div></div>
+    </div>
+  </div>
+
+  <!-- TECH SKILLS + CONTACT -->
+  <div class="two-col fade-up">
+    <div class="tech-box">
+      <h3>Compétences Techniques</h3>
+      <div class="tag-group">
+        <div class="cat">Automatisme / IHM</div>
+        <div class="tech-tags"><span class="tag">Unity Pro</span><span class="tag">Vijeo Design</span><span class="tag">PL7 Pro</span><span class="tag">TIA Portal</span></div>
+      </div>
+      <div class="tag-group" style="margin-top:10px">
+        <div class="cat">Électricité</div>
+        <div class="tech-tags"><span class="tag">BT / HT</span><span class="tag">Câblage</span><span class="tag">Raccordement</span><span class="tag">Lecture schémas</span></div>
+      </div>
+      <div class="tag-group" style="margin-top:10px">
+        <div class="cat">CAO / Conception</div>
+        <div class="tech-tags"><span class="tag muted">SolidWorks</span><span class="tag muted">Fusion 360</span><span class="tag muted">SEELEC</span></div>
+      </div>
+      <div class="tag-group" style="margin-top:10px">
+        <div class="cat">Création 3D &amp; Jeux</div>
+        <div class="tech-tags"><span class="tag muted">Blender</span><span class="tag muted">Unity</span></div>
+      </div>
+    </div>
+
+    <div class="tech-box">
+      <h3>Contact</h3>
+      <div class="contact-list">
+        <div class="contact-item"><div class="contact-icon">✉</div><span>mercedzalamou9@gmail.com</span></div>
+        <div class="contact-item"><div class="contact-icon">☏</div><span>06 41 39 67 94</span></div>
+        <div class="contact-item"><div class="contact-icon">◎</div><span>L'Haÿ-les-Roses, 94240</span></div>
+        <div class="contact-item"><div class="contact-icon">🚗</div><span>Permis B (en cours)</span></div>
+      </div>
+      <div class="available-badge">
+        <div class="ai">⚡</div>
+        <div>
+          <strong>Disponible — Alternance</strong>
+          <span>Licence Pro / BUT · Rentrée Septembre 2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LANGUES -->
+  <div class="section fade-up">
+    <div class="section-title">Langues</div>
+    <div class="lang-row">
+      <div class="lang-item">
+        <div class="lang-name">🇫🇷 Français</div>
+        <div class="lang-level">Langue natale</div>
+        <div class="lang-bar"><div class="lang-bar-fill" style="width:100%"></div></div>
+      </div>
+      <div class="lang-item">
+        <div class="lang-name">🇬🇧 Anglais</div>
+        <div class="lang-level">Courant — presque bilingue</div>
+        <div class="lang-bar"><div class="lang-bar-fill" style="width:82%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCES -->
+  <div class="section fade-up">
+    <div class="section-title">Expériences Professionnelles</div>
+    <div class="timeline">
+
+      <!-- EIFFAGE — fibre optique RATP -->
+      <div class="tl-item current">
+        <div class="tl-header">
+          <div class="tl-left">
+            <div class="tl-top">
+              <div class="tl-ico">🚇</div>
+              <div class="tl-company">Eiffage</div>
+            </div>
+            <div class="tl-role">Électricien N2</div>
+            <div class="tl-sector">📡 Fibre optique · RATP / Transports urbains</div>
+          </div>
+          <div class="tl-meta">
+            <div class="tl-date">02/2026 — fin avril 2026</div>
+            <div class="contract-chip interim">Intérim</div>
+          </div>
+        </div>
+        <ul class="tl-bullets">
+          <li>Câblage et montage d'armoires électriques</li>
+          <li>Fibre optique et réseaux</li>
+        </ul>
+      </div>
+
+      <!-- ATELE — atelier montage armoires -->
+      <div class="tl-item">
+        <div class="tl-header">
+          <div class="tl-left">
+            <div class="tl-top">
+              <div class="tl-ico">🏭</div>
+              <div class="tl-company">ATELE</div>
+            </div>
+            <div class="tl-role">Monteur (non cadre)</div>
+            <div class="tl-sector">⚙️ Industrie · Atelier montage d'armoires</div>
+          </div>
+          <div class="tl-meta">
+            <div class="tl-date">17/11/2025 — 21/11/2025</div>
+            <div class="contract-chip interim">Intérim</div>
+          </div>
+        </div>
+        <ul class="tl-bullets">
+          <li>Câblage et montage d'armoires électriques</li>
+          <li>Contrôle de continuité et d'isolement des circuits</li>
+          <li>Identifier et corriger les anomalies techniques</li>
+        </ul>
+      </div>
+
+      <!-- HERVÉ THERMIQUE — bâtiment tertiaire -->
+      <div class="tl-item">
+        <div class="tl-header">
+          <div class="tl-left">
+            <div class="tl-top">
+              <div class="tl-ico">🏢</div>
+              <div class="tl-company">Hervé Thermique</div>
+            </div>
+            <div class="tl-role">Électricien N2 / Tertiaire</div>
+            <div class="tl-sector">🔌 Électricité · Bâtiment tertiaire</div>
+          </div>
+          <div class="tl-meta">
+            <div class="tl-date">07/2025 — 08/2025</div>
+            <div class="contract-chip interim">Intérim</div>
+          </div>
+        </div>
+        <ul class="tl-bullets">
+          <li>Installation et mise en service des équipements électriques dans les bâtiments</li>
+        </ul>
+      </div>
+
+      <!-- AIRBUS — aéronautique -->
+      <div class="tl-item">
+        <div class="tl-header">
+          <div class="tl-left">
+            <div class="tl-top">
+              <div class="tl-ico">✈️</div>
+              <div class="tl-company">Latesys / Airbus</div>
+            </div>
+            <div class="tl-role">Électromécanicien G38</div>
+            <div class="tl-sector">🛩️ Aéronautique · Airbus</div>
+          </div>
+          <div class="tl-meta">
+            <div class="tl-date">04/2025 — 05/2025</div>
+            <div class="contract-chip interim">Intérim</div>
+          </div>
+        </div>
+        <ul class="tl-bullets">
+          <li>Électromécanique : montage, analyse et dépannage</li>
+        </ul>
+      </div>
+
+      <!-- SAMELEC — croisière civile -->
+      <div class="tl-item">
+        <div class="tl-header">
+          <div class="tl-left">
+            <div class="tl-top">
+              <div class="tl-ico">🛳️</div>
+              <div class="tl-company">Samelec / Chantier de l'Atlantique</div>
+            </div>
+            <div class="tl-role">Électricien Naval</div>
+            <div class="tl-sector">⚓ Naval · Paquebot de croisière civile</div>
+          </div>
+          <div class="tl-meta">
+            <div class="tl-date">02/2025 — 04/2025</div>
+            <div class="contract-chip interim">Intérim</div>
+          </div>
+        </div>
+        <ul class="tl-bullets">
+          <li>Raccordement moteurs et armoires électriques</li>
+        </ul>
+      </div>
+
+      <!-- METAL ÉNERGIE — militaire ravitailleur -->
+      <div class="tl-item">
+        <div class="tl-header">
+          <div class="tl-left">
+            <div class="tl-top">
+              <div class="tl-ico">⚓</div>
+              <div class="tl-company">Metal Énergie / Chantier de l'Atlantique</div>
+            </div>
+            <div class="tl-role">Électricien Naval / Militaire</div>
+            <div class="tl-sector">🛡️ Naval militaire · Bâtiment ravitailleur</div>
+          </div>
+          <div class="tl-meta">
+            <div class="tl-date">11/2024 — 12/2024</div>
+            <div class="contract-chip interim">Intérim</div>
+          </div>
+        </div>
+        <ul class="tl-bullets">
+          <li>Raccordement porte incendie, moteur et armoire électrique</li>
+        </ul>
+      </div>
+
+      <!-- SNEF — sous-station offshore -->
+      <div class="tl-item">
+        <div class="tl-header">
+          <div class="tl-left">
+            <div class="tl-top">
+              <div class="tl-ico">💨</div>
+              <div class="tl-company">Snef / Chantier de l'Atlantique</div>
+            </div>
+            <div class="tl-role">Électricien O35</div>
+            <div class="tl-sector">🌊 Énergie offshore · Sous-station éolienne</div>
+          </div>
+          <div class="tl-meta">
+            <div class="tl-date">08/2024 — 09/2024</div>
+            <div class="contract-chip interim">Intérim</div>
+          </div>
+        </div>
+        <ul class="tl-bullets">
+          <li>Raccordement d'armoire de Haute Tension pour la sous-station éolienne</li>
+        </ul>
+      </div>
+
+      <!-- GESTAL — naval construction -->
+      <div class="tl-item">
+        <div class="tl-header">
+          <div class="tl-left">
+            <div class="tl-top">
+              <div class="tl-ico">🚢</div>
+              <div class="tl-company">Gestal / Chantier de l'Atlantique</div>
+            </div>
+            <div class="tl-role">Électricien Naval X34 — Technicien d'essai</div>
+            <div class="tl-sector">⚓ Naval · Construction navale</div>
+          </div>
+          <div class="tl-meta">
+            <div class="tl-date">01/2024 — 07/2024</div>
+            <div class="contract-chip cdic">CDIC · Pér. d'essai</div>
+          </div>
+        </div>
+        <ul class="tl-bullets">
+          <li>Technicien d'essai, tirage de câble pour les luminaires int/ext</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RÉALISATIONS -->
+  <div class="section fade-up" id="realisations">
+    <div class="section-title">Réalisations &amp; Projets</div>
+    <div class="projects-grid">
+
+      <!-- SAMELEC — salle de théâtre paquebot (carte hero pleine largeur) -->
+      <div class="proj-card proj-hero">
+        <div class="proj-header">
+          <div class="proj-ico">🎭</div>
+          <div class="proj-type naval">Mission navale · Samelec</div>
+        </div>
+        <div class="proj-title">Raccordement salle de théâtre — Paquebot de croisière</div>
+        <div class="proj-desc">Raccordement moteur, baies, armoires et autres éléments dans la salle de théâtre d'un paquebot de croisière. Le système intègre un ascenseur de scène motorisé permettant de faire monter comédiens et acteurs depuis les coulisses directement sur scène.</div>
+        <div class="proj-tags"><span>Naval</span><span>Raccordement moteur</span><span>Baies &amp; armoires</span><span>Scène automatisée</span></div>
+        <div class="proj-actions">
+          <a class="proj-btn doc" href="https://drive.google.com/file/d/1_pcLQpZTB_bGl4Iwyf3oR8dt40XPbAys/view?usp=drive_link" target="_blank" rel="noopener">📄 Voir le rapport de mission</a>
+        </div>
+      </div>
+
+      <!-- HVAC Naval — Formation Mécatronique Apave -->
+      <a class="proj-card" href="https://drive.google.com/file/d/1TZ2PMFO_1POMWXzAjkVaZlxb2c54oJTM/view?usp=drive_link" target="_blank" rel="noopener">
+        <div class="proj-header">
+          <div class="proj-ico">🌡️</div>
+          <div class="proj-type formation">Formation Mécatronique · Apave</div>
+        </div>
+        <div class="proj-title">HVAC Naval — Climatisation des navires</div>
+        <div class="proj-desc">Étude du fonctionnement des systèmes de climatisation embarqués à bord des navires (circuits air froid et air chaud). Spécialité HVAC appliquée au secteur naval dans le cadre de la formation Mécatronique à l'Apave Saint-Nazaire.</div>
+        <div class="proj-tags"><span>HVAC</span><span>Naval</span><span>Climatisation</span><span>Mécatronique</span></div>
+        <div class="proj-link">Voir le document ↗</div>
+      </a>
+
+      <!-- Formation électrique — tests de fonctionnement -->
+      <a class="proj-card" href="https://drive.google.com/file/d/1LoR0ddXyBI2gtCxgNIZOiXrQQmhOhm3F/view?usp=drive_link" target="_blank" rel="noopener">
+        <div class="proj-header">
+          <div class="proj-ico">⚡</div>
+          <div class="proj-type etude">Formation électrique</div>
+        </div>
+        <div class="proj-title">Tests de fonctionnement électrique</div>
+        <div class="proj-desc">Réalisation de tests et vérifications de fonctionnement dans le cadre de la formation électrique. Contrôle des installations, mesures et validation des circuits électriques.</div>
+        <div class="proj-tags"><span>Électricité</span><span>Tests</span><span>Contrôle</span><span>Formation</span></div>
+        <div class="proj-link">Voir le document ↗</div>
+      </a>
+
+
+      <!-- BTS CRSA — Conditionneuse de CD (hero pleine largeur avec vidéo) -->
+      <div class="proj-card proj-hero proj-yt-card">
+        <div class="proj-header">
+          <div class="proj-ico">🎓</div>
+          <div class="proj-type etude">Projet BTS CRSA · 2023</div>
+        </div>
+        <div class="proj-title">Conditionneuse de CD — Projet de fin d'année</div>
+        <div class="proj-desc">Conception et réalisation d'une conditionneuse de CD automatisée dans le cadre du BTS CRSA au Lycée Jean Jaurès. Étude du système, programmation automate, câblage et mise en service de la chaîne de conditionnement.</div>
+        <div class="proj-tags"><span>Automatisme</span><span>BTS CRSA</span><span>Chaîne automatisée</span><span>Mise en service</span></div>
+        <div class="yt-embed-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/lNZVAjTThhU"
+            title="Conditionneuse de CD — BTS CRSA 2023"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="proj-actions">
+          <a class="proj-btn yt" href="https://youtu.be/lNZVAjTThhU" target="_blank" rel="noopener">▶ Voir sur YouTube</a>
+        </div>
+      </div>
+
+      <!-- Photo paquebot de croisière -->
+      <div class="proj-card proj-photo">
+        <div class="proj-header">
+          <div class="proj-ico">🛳️</div>
+          <div class="proj-type naval">Chantier de l'Atlantique</div>
+        </div>
+        <div class="proj-title">Paquebot de croisière sur lequel j'ai travaillé</div>
+        <img class="proj-img" src="https://drive.google.com/uc?export=view&id=1h64zzzD6ZLy4AiRKaOvF73v9y5-hFebH" alt="Paquebot de croisière" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="proj-img-fallback" style="display:none">
+          <a href="https://drive.google.com/file/d/1h64zzzD6ZLy4AiRKaOvF73v9y5-hFebH/view?usp=drive_link" target="_blank" rel="noopener" class="proj-btn doc">🖼️ Voir la photo</a>
+        </div>
+        <div class="proj-tags"><span>Croisière civile</span><span>Naval</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FORMATION + CERTS -->
+  <div class="section fade-up">
+    <div class="section-title">Formation</div>
+    <div class="formation-grid">
+      <div class="formation-card">
+        <div class="year">2024</div>
+        <strong>Formation Mécatronique</strong>
+        <span>Apave — Saint-Nazaire</span>
+        <span style="color:var(--gold-dim);font-size:11px;margin-top:3px">Systèmes Automatiques</span>
+      </div>
+      <div class="formation-card">
+        <div class="year">2023</div>
+        <strong>BTS CRSA</strong>
+        <span>Lycée Jean Jaurès</span>
+        <span style="color:var(--gold-dim);font-size:11px;margin-top:3px">Conception &amp; Réalisation Systèmes Automatiques</span>
+      </div>
+    </div>
+    <div style="margin-top:22px">
+      <div class="section-title" style="font-size:17px;margin-bottom:12px">Certifications &amp; Habilitations</div>
+      <div class="certs-row">
+        <div class="cert-chip"><div class="dot green"></div>PASI — Validé</div>
+        <a class="cert-chip" href="https://drive.google.com/file/d/1g8CGqbslMgGvKLFeOQEV6gkcWO7Qg9zB/view?usp=drive_link" target="_blank" rel="noopener" title="Voir le document"><div class="dot green"></div>Habilitation électrique BT <span class="cert-link-ico">↗</span></a>
+        <div class="cert-chip"><div class="dot"></div>Travail en hauteur (en cours)</div>
+        <div class="cert-chip"><div class="dot green"></div>SST — Sauveteur Secouriste</div>
+        <a class="cert-chip" href="https://drive.google.com/file/d/12krr5y0rkxbgIDMjfwl7fmZxd233JoHz/view?usp=drive_link" target="_blank" rel="noopener" title="Voir le document"><div class="dot green"></div>CACES / Pont Roulant <span class="cert-link-ico">↗</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRENGTHS + HOBBIES -->
+  <div class="two-col fade-up">
+    <div class="tech-box">
+      <h3>Points Forts</h3>
+      <div class="strengths-row">
+        <div class="strength"><span class="ico">🤝</span>Travail d'équipe</div>
+        <div class="strength"><span class="ico">🎯</span>Rigueur &amp; Fiabilité</div>
+        <div class="strength"><span class="ico">⚙️</span>Adaptabilité &amp; Réactivité</div>
+        <div class="strength"><span class="ico">💡</span>Sens de l'initiative</div>
+      </div>
+    </div>
+    <div class="tech-box">
+      <h3>Centres d'intérêt</h3>
+      <div class="hobbies-row">
+        <div class="hobby"><span class="ico">✈️</span>Voyage</div>
+        <div class="hobby"><span class="ico">🏋️</span>Sport</div>
+        <div class="hobby"><span class="ico">📖</span>Lecture</div>
+        <div class="hobby"><span class="ico">🤖</span>Robotique</div>
+        <div class="hobby"><span class="ico">🎮</span>Jeux vidéo</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER QUOTE -->
+  <div class="footer-quote fade-up">
+    <div class="quote-icon">⚡</div>
+    <p>Rigoureux, réactif et motivé — je m'investis pleinement dans chaque projet pour apporter des solutions techniques fiables. Toujours prêt à relever de nouveaux défis et à contribuer à la réussite des équipes dans le cadre d'une alternance en Automatisme, Systèmes Embarqués ou Robotique.</p>
+  </div>
+
+</div>
+<script>
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});},{threshold:0.08});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
