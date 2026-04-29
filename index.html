@@ -209,6 +209,286 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
   .strengths-row{grid-template-columns:repeat(2,1fr)}
   .formation-grid{grid-template-columns:1fr}
 }
+
+/* ═══════════════════════════════════
+   ICON ANIMATIONS — chaque icône vit
+═══════════════════════════════════ */
+
+/* ⚡ ÉCLAIR — flash électrique zigzag */
+.ico-flash {
+  display:inline-block;
+  animation: electric 2.4s infinite;
+  transform-origin: center bottom;
+}
+@keyframes electric {
+  0%,100% { transform:skewX(0deg) scale(1); filter:brightness(1); }
+  10%      { transform:skewX(-15deg) scale(1.15); filter:brightness(2) drop-shadow(0 0 6px #f59e0b); }
+  15%      { transform:skewX(12deg) scale(0.95); filter:brightness(1.5); }
+  20%      { transform:skewX(-8deg) scale(1.1);  filter:brightness(2.5) drop-shadow(0 0 10px #fcd34d); }
+  25%      { transform:skewX(0deg)  scale(1);    filter:brightness(1); }
+  85%      { transform:skewX(0deg)  scale(1);    filter:brightness(1); }
+  90%      { transform:skewX(-6deg) scale(1.08); filter:brightness(1.8) drop-shadow(0 0 4px #f59e0b); }
+  95%      { transform:skewX(4deg)  scale(1);    filter:brightness(1); }
+}
+
+/* 🚇 MÉTRO — glisse gauche-droite */
+.ico-metro {
+  display:inline-block;
+  animation: metro 2.8s ease-in-out infinite;
+}
+@keyframes metro {
+  0%,100% { transform:translateX(0); }
+  25%     { transform:translateX(4px); }
+  75%     { transform:translateX(-4px); }
+}
+
+/* 🏭 USINE — vibration industrielle */
+.ico-factory {
+  display:inline-block;
+  animation: factory 0.15s linear infinite;
+}
+@keyframes factory {
+  0%,100% { transform:translate(0,0); }
+  25%     { transform:translate(1px,0); }
+  50%     { transform:translate(0,1px); }
+  75%     { transform:translate(-1px,0); }
+}
+
+/* ✈️ AVION — décollage + vol */
+.ico-plane {
+  display:inline-block;
+  animation: plane 3s ease-in-out infinite;
+}
+@keyframes plane {
+  0%      { transform:translate(0,0) rotate(0deg); }
+  30%     { transform:translate(6px,-6px) rotate(-15deg); }
+  60%     { transform:translate(10px,-10px) rotate(-20deg); }
+  80%     { transform:translate(4px,-4px) rotate(-8deg); }
+  100%    { transform:translate(0,0) rotate(0deg); }
+}
+
+/* 🛳️ PAQUEBOT — balancement vague */
+.ico-ship {
+  display:inline-block;
+  animation: ship 3.5s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+@keyframes ship {
+  0%,100% { transform:rotate(0deg) translateY(0); }
+  25%     { transform:rotate(3deg) translateY(-2px); }
+  75%     { transform:rotate(-3deg) translateY(-2px); }
+}
+
+/* ⚓ ANCRE — balancement pendule */
+.ico-anchor {
+  display:inline-block;
+  animation: anchor 2s ease-in-out infinite;
+  transform-origin: top center;
+}
+@keyframes anchor {
+  0%,100% { transform:rotate(0deg); }
+  30%     { transform:rotate(8deg); }
+  70%     { transform:rotate(-8deg); }
+}
+
+/* 💨 ÉOLIENNE/VENT — soufflage pulsé */
+.ico-wind {
+  display:inline-block;
+  animation: wind 1.8s ease-in-out infinite;
+}
+@keyframes wind {
+  0%,100% { transform:scaleX(1) translateX(0); filter:blur(0); }
+  40%     { transform:scaleX(1.12) translateX(3px); filter:blur(.5px); }
+  60%     { transform:scaleX(0.95) translateX(-1px); filter:blur(0); }
+}
+
+/* 🚢 CARGO/FERRY — ondulation lente */
+.ico-ferry {
+  display:inline-block;
+  animation: ferry 4s ease-in-out infinite;
+}
+@keyframes ferry {
+  0%,100% { transform:translateX(0) rotate(0deg); }
+  33%     { transform:translateX(4px) rotate(2deg); }
+  66%     { transform:translateX(-4px) rotate(-2deg); }
+}
+
+/* 🏢 BÂTIMENT — construction pulse */
+.ico-building {
+  display:inline-block;
+  animation: building 3s ease-in-out infinite;
+}
+@keyframes building {
+  0%,100% { transform:scaleY(1); filter:brightness(1); }
+  50%     { transform:scaleY(1.04); filter:brightness(1.15) drop-shadow(0 -4px 6px rgba(245,158,11,.4)); }
+}
+
+/* 🎭 THÉÂTRE — rideau + spotlight */
+.ico-theatre {
+  display:inline-block;
+  animation: theatre 3s ease-in-out infinite;
+}
+@keyframes theatre {
+  0%,100% { transform:scale(1); filter:brightness(1); }
+  20%     { transform:scale(1.2) rotate(-5deg); filter:brightness(1.4) drop-shadow(0 0 8px rgba(255,200,0,.6)); }
+  40%     { transform:scale(1) rotate(5deg); filter:brightness(1); }
+  60%     { transform:scale(1.15) rotate(0deg); filter:brightness(1.3) drop-shadow(0 0 6px rgba(255,200,0,.4)); }
+}
+
+/* 🌡️ THERMOMÈTRE — monte/descend */
+.ico-thermo {
+  display:inline-block;
+  animation: thermo 2.5s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+@keyframes thermo {
+  0%,100% { transform:scaleY(1); filter:hue-rotate(0deg); }
+  50%     { transform:scaleY(1.08); filter:hue-rotate(30deg) brightness(1.3); }
+}
+
+/* 🎓 DIPLÔME — rebond académique */
+.ico-grad {
+  display:inline-block;
+  animation: grad 2s ease-in-out infinite;
+}
+@keyframes grad {
+  0%,100% { transform:translateY(0) rotate(0deg); }
+  20%     { transform:translateY(-6px) rotate(-5deg); }
+  40%     { transform:translateY(0) rotate(0deg); }
+  60%     { transform:translateY(-3px) rotate(3deg); }
+}
+
+/* 🤝 POIGNÉE — handshake pump */
+.ico-handshake {
+  display:inline-block;
+  animation: shake 1.6s ease-in-out infinite;
+}
+@keyframes shake {
+  0%,100% { transform:translateY(0) rotate(0deg); }
+  25%     { transform:translateY(-3px) rotate(-8deg); }
+  50%     { transform:translateY(0) rotate(0deg); }
+  75%     { transform:translateY(-3px) rotate(8deg); }
+}
+
+/* 🎯 CIBLE — zoom-in pulse */
+.ico-target {
+  display:inline-block;
+  animation: target 2s ease-in-out infinite;
+}
+@keyframes target {
+  0%,100% { transform:scale(1); }
+  50%     { transform:scale(1.18); filter:drop-shadow(0 0 6px rgba(245,158,11,.5)); }
+}
+
+/* ⚙️ ENGRENAGE — rotation continue */
+.ico-gear {
+  display:inline-block;
+  animation: gear 4s linear infinite;
+}
+@keyframes gear {
+  from { transform:rotate(0deg); }
+  to   { transform:rotate(360deg); }
+}
+
+/* 💡 AMPOULE — scintillement */
+.ico-bulb {
+  display:inline-block;
+  animation: bulb 2.5s ease-in-out infinite;
+}
+@keyframes bulb {
+  0%,100% { filter:brightness(1); }
+  15%     { filter:brightness(2) drop-shadow(0 0 8px #fcd34d); }
+  20%     { filter:brightness(0.8); }
+  25%     { filter:brightness(2.2) drop-shadow(0 0 12px #f59e0b); }
+  35%     { filter:brightness(1); }
+  75%     { filter:brightness(1); }
+  80%     { filter:brightness(1.6) drop-shadow(0 0 5px #fcd34d); }
+}
+
+/* ✉ ENVELOPPE — battement */
+.ico-mail {
+  display:inline-block;
+  animation: mail 3s ease-in-out infinite;
+}
+@keyframes mail {
+  0%,100% { transform:scale(1) rotate(0deg); }
+  20%     { transform:scale(1.1) rotate(-5deg); }
+  40%     { transform:scale(1.1) rotate(5deg); }
+  60%     { transform:scale(1) rotate(0deg); }
+}
+
+/* 🚗 VOITURE — conduite */
+.ico-car {
+  display:inline-block;
+  animation: car 2.5s ease-in-out infinite;
+}
+@keyframes car {
+  0%,100% { transform:translateX(0) rotate(0deg); }
+  30%     { transform:translateX(5px) rotate(2deg); }
+  60%     { transform:translateX(-5px) rotate(-2deg); }
+}
+
+/* 🤖 ROBOT — mouvement mécanique */
+.ico-robot {
+  display:inline-block;
+  animation: robot 1.8s steps(4) infinite;
+}
+@keyframes robot {
+  0%    { transform:translateY(0) rotate(0deg); }
+  25%   { transform:translateY(-3px) rotate(-3deg); }
+  50%   { transform:translateY(0) rotate(0deg); }
+  75%   { transform:translateY(-3px) rotate(3deg); }
+  100%  { transform:translateY(0) rotate(0deg); }
+}
+
+/* 🎮 MANETTE — joystick wiggle */
+.ico-game {
+  display:inline-block;
+  animation: game 1.4s ease-in-out infinite;
+}
+@keyframes game {
+  0%,100% { transform:rotate(0deg); }
+  20%     { transform:rotate(-10deg) scale(1.1); }
+  40%     { transform:rotate(10deg) scale(1.1); }
+  60%     { transform:rotate(-6deg); }
+  80%     { transform:rotate(6deg); }
+}
+
+/* 📖 LIVRE — ouverture pages */
+.ico-book {
+  display:inline-block;
+  animation: book 3s ease-in-out infinite;
+  transform-origin: left center;
+}
+@keyframes book {
+  0%,100% { transform:rotateY(0deg) scale(1); }
+  30%     { transform:rotateY(15deg) scale(1.05); }
+  60%     { transform:rotateY(-10deg) scale(1.05); }
+}
+
+/* 🏋️ MUSCU — lever de poids */
+.ico-sport {
+  display:inline-block;
+  animation: sport 2s ease-in-out infinite;
+}
+@keyframes sport {
+  0%,100% { transform:translateY(0) scale(1); }
+  30%     { transform:translateY(-8px) scale(0.95); }
+  60%     { transform:translateY(0) scale(1.05); }
+  80%     { transform:translateY(-3px) scale(0.98); }
+}
+
+/* ✈️ VOYAGE/AVION hobby — vol diagonal */
+.ico-travel {
+  display:inline-block;
+  animation: travel 4s ease-in-out infinite;
+}
+@keyframes travel {
+  0%,100% { transform:translateX(0) translateY(0) rotate(0deg); }
+  25%     { transform:translateX(5px) translateY(-5px) rotate(-10deg); }
+  50%     { transform:translateX(8px) translateY(-8px) rotate(-15deg); }
+  75%     { transform:translateX(3px) translateY(-3px) rotate(-5deg); }
+}
 </style>
 </head>
 <body>
@@ -268,13 +548,11 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
     <div class="tech-box">
       <h3>Contact</h3>
       <div class="contact-list">
-        <div class="contact-item"><div class="contact-icon">✉</div><span>mercedzalamou9@gmail.com</span></div>
-        <div class="contact-item"><div class="contact-icon">☏</div><span>06 41 39 67 94</span></div>
-        <div class="contact-item"><div class="contact-icon">◎</div><span>L'Haÿ-les-Roses, 94240</span></div>
-        <div class="contact-item"><div class="contact-icon">🚗</div><span>Permis B (en cours)</span></div>
+        <div class="contact-item"><div class="contact-icon"><span class="ico-mail">✉</span></div><span>mercedzalamou9@gmail.com</span></div>
+        <div class="contact-item"><div class="contact-icon"><span class="ico-car">🚗</span></div><span>Permis B (en cours)</span></div>
       </div>
       <div class="available-badge">
-        <div class="ai">⚡</div>
+        <div class="ai"><span class="ico-flash">⚡</span></div>
         <div>
           <strong>Disponible — Alternance</strong>
           <span>Licence Pro / BUT · Rentrée Septembre 2026</span>
@@ -310,7 +588,7 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
         <div class="tl-header">
           <div class="tl-left">
             <div class="tl-top">
-              <div class="tl-ico">🚇</div>
+              <div class="tl-ico"><span class="ico-metro">🚇</span></div>
               <div class="tl-company">Eiffage</div>
             </div>
             <div class="tl-role">Électricien N2</div>
@@ -332,7 +610,7 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
         <div class="tl-header">
           <div class="tl-left">
             <div class="tl-top">
-              <div class="tl-ico">🏭</div>
+              <div class="tl-ico"><span class="ico-factory">🏭</span></div>
               <div class="tl-company">ATELE</div>
             </div>
             <div class="tl-role">Monteur (non cadre)</div>
@@ -355,7 +633,7 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
         <div class="tl-header">
           <div class="tl-left">
             <div class="tl-top">
-              <div class="tl-ico">🏢</div>
+              <div class="tl-ico"><span class="ico-building">🏢</span></div>
               <div class="tl-company">Hervé Thermique</div>
             </div>
             <div class="tl-role">Électricien N2 / Tertiaire</div>
@@ -376,7 +654,7 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
         <div class="tl-header">
           <div class="tl-left">
             <div class="tl-top">
-              <div class="tl-ico">✈️</div>
+              <div class="tl-ico"><span class="ico-plane">✈️</span></div>
               <div class="tl-company">Latesys / Airbus</div>
             </div>
             <div class="tl-role">Électromécanicien G38</div>
@@ -397,7 +675,7 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
         <div class="tl-header">
           <div class="tl-left">
             <div class="tl-top">
-              <div class="tl-ico">🛳️</div>
+              <div class="tl-ico"><span class="ico-ship">🛳️</span></div>
               <div class="tl-company">Samelec / Chantier de l'Atlantique</div>
             </div>
             <div class="tl-role">Électricien Naval</div>
@@ -418,7 +696,7 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
         <div class="tl-header">
           <div class="tl-left">
             <div class="tl-top">
-              <div class="tl-ico">⚓</div>
+              <div class="tl-ico"><span class="ico-anchor">⚓</span></div>
               <div class="tl-company">Metal Énergie / Chantier de l'Atlantique</div>
             </div>
             <div class="tl-role">Électricien Naval / Militaire</div>
@@ -439,7 +717,7 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
         <div class="tl-header">
           <div class="tl-left">
             <div class="tl-top">
-              <div class="tl-ico">💨</div>
+              <div class="tl-ico"><span class="ico-wind">💨</span></div>
               <div class="tl-company">Snef / Chantier de l'Atlantique</div>
             </div>
             <div class="tl-role">Électricien O35</div>
@@ -460,7 +738,7 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
         <div class="tl-header">
           <div class="tl-left">
             <div class="tl-top">
-              <div class="tl-ico">🚢</div>
+              <div class="tl-ico"><span class="ico-ferry">🚢</span></div>
               <div class="tl-company">Gestal / Chantier de l'Atlantique</div>
             </div>
             <div class="tl-role">Électricien Naval X34 — Technicien d'essai</div>
@@ -487,7 +765,7 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
       <!-- SAMELEC — salle de théâtre paquebot (carte hero pleine largeur) -->
       <div class="proj-card proj-hero">
         <div class="proj-header">
-          <div class="proj-ico">🎭</div>
+          <div class="proj-ico"><span class="ico-theatre">🎭</span></div>
           <div class="proj-type naval">Mission navale · Samelec</div>
         </div>
         <div class="proj-title">Raccordement salle de théâtre — Paquebot de croisière</div>
@@ -501,7 +779,7 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
       <!-- HVAC Naval — Formation Mécatronique Apave -->
       <a class="proj-card" href="https://drive.google.com/file/d/1TZ2PMFO_1POMWXzAjkVaZlxb2c54oJTM/view?usp=sharing" target="_blank" rel="noopener">
         <div class="proj-header">
-          <div class="proj-ico">🌡️</div>
+          <div class="proj-ico"><span class="ico-thermo">🌡️</span></div>
           <div class="proj-type formation">Formation Mécatronique · Apave</div>
         </div>
         <div class="proj-title">HVAC Naval — Climatisation des navires</div>
@@ -513,7 +791,7 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
       <!-- Formation électrique — tests de fonctionnement -->
       <a class="proj-card" href="https://drive.google.com/file/d/1LoR0ddXyBI2gtCxgNIZOiXrQQmhOhm3F/view?usp=sharing" target="_blank" rel="noopener">
         <div class="proj-header">
-          <div class="proj-ico">⚡</div>
+          <div class="proj-ico"><span class="ico-flash">⚡</span></div>
           <div class="proj-type etude">Formation électrique</div>
         </div>
         <div class="proj-title">Tests de fonctionnement électrique</div>
@@ -526,7 +804,7 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
       <!-- BTS CRSA — Conditionneuse de CD (hero pleine largeur avec vidéo) -->
       <div class="proj-card proj-hero proj-yt-card">
         <div class="proj-header">
-          <div class="proj-ico">🎓</div>
+          <div class="proj-ico"><span class="ico-grad">🎓</span></div>
           <div class="proj-type etude">Projet BTS CRSA · 2023</div>
         </div>
         <div class="proj-title">Conditionneuse de CD — Projet de fin d'année</div>
@@ -549,7 +827,7 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
       <!-- Photo paquebot de croisière -->
       <div class="proj-card proj-photo">
         <div class="proj-header">
-          <div class="proj-ico">🛳️</div>
+          <div class="proj-ico"><span class="ico-ship">🛳️</span></div>
           <div class="proj-type naval">Chantier de l'Atlantique</div>
         </div>
         <div class="proj-title">Paquebot de croisière sur lequel j'ai travaillé</div>
@@ -597,27 +875,27 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
     <div class="tech-box">
       <h3>Points Forts</h3>
       <div class="strengths-row">
-        <div class="strength"><span class="ico">🤝</span>Travail d'équipe</div>
-        <div class="strength"><span class="ico">🎯</span>Rigueur &amp; Fiabilité</div>
-        <div class="strength"><span class="ico">⚙️</span>Adaptabilité &amp; Réactivité</div>
-        <div class="strength"><span class="ico">💡</span>Sens de l'initiative</div>
+        <div class="strength"><span class="ico ico-handshake">🤝</span>Travail d'équipe</div>
+        <div class="strength"><span class="ico ico-target">🎯</span>Rigueur &amp; Fiabilité</div>
+        <div class="strength"><span class="ico ico-gear">⚙️</span>Adaptabilité &amp; Réactivité</div>
+        <div class="strength"><span class="ico ico-bulb">💡</span>Sens de l'initiative</div>
       </div>
     </div>
     <div class="tech-box">
       <h3>Centres d'intérêt</h3>
       <div class="hobbies-row">
-        <div class="hobby"><span class="ico">✈️</span>Voyage</div>
-        <div class="hobby"><span class="ico">🏋️</span>Sport</div>
-        <div class="hobby"><span class="ico">📖</span>Lecture</div>
-        <div class="hobby"><span class="ico">🤖</span>Robotique</div>
-        <div class="hobby"><span class="ico">🎮</span>Jeux vidéo</div>
+        <div class="hobby"><span class="ico ico-travel">✈️</span>Voyage</div>
+        <div class="hobby"><span class="ico ico-sport">🏋️</span>Sport</div>
+        <div class="hobby"><span class="ico ico-book">📖</span>Lecture</div>
+        <div class="hobby"><span class="ico ico-robot">🤖</span>Robotique</div>
+        <div class="hobby"><span class="ico ico-game">🎮</span>Jeux vidéo</div>
       </div>
     </div>
   </div>
 
   <!-- FOOTER QUOTE -->
   <div class="footer-quote fade-up">
-    <div class="quote-icon">⚡</div>
+    <div class="quote-icon"><span class="ico-flash">⚡</span></div>
     <p>Rigoureux, réactif et motivé — je m'investis pleinement dans chaque projet pour apporter des solutions techniques fiables. Toujours prêt à relever de nouveaux défis et à contribuer à la réussite des équipes dans le cadre d'une alternance en Automatisme, Systèmes Embarqués ou Robotique.</p>
   </div>
 
