@@ -489,13 +489,144 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
   50%     { transform:translateX(8px) translateY(-8px) rotate(-15deg); }
   75%     { transform:translateX(3px) translateY(-3px) rotate(-5deg); }
 }
+
+/* ══ SECTION ICON BASE ══ */
+.s-ico {
+  display:inline-block;
+  margin-right:8px;
+  vertical-align:middle;
+  font-size:0.85em;
+}
+
+/* 💼 MALLETTE — swing */
+.ico-briefcase { animation: briefcase 3s ease-in-out infinite; }
+@keyframes briefcase {
+  0%,100% { transform:rotate(0deg) translateY(0); }
+  25%     { transform:rotate(-8deg) translateY(-2px); }
+  75%     { transform:rotate(8deg) translateY(-2px); }
+}
+
+/* 🚀 FUSÉE — décollage */
+.ico-rocket { animation: rocket 2.5s ease-in-out infinite; }
+@keyframes rocket {
+  0%,100% { transform:translateY(0) rotate(-45deg); }
+  40%     { transform:translateY(-8px) rotate(-45deg) scale(1.15); filter:drop-shadow(0 4px 8px rgba(245,158,11,.5)); }
+  60%     { transform:translateY(-4px) rotate(-45deg); }
+}
+
+/* 🌍 GLOBE — rotation */
+.ico-globe { animation: globe 6s linear infinite; }
+@keyframes globe {
+  from { transform:rotate(0deg); }
+  to   { transform:rotate(360deg); }
+}
+
+/* 🏅 MÉDAILLE — swing brillant */
+.ico-cert { animation: cert 2.5s ease-in-out infinite; }
+@keyframes cert {
+  0%,100% { transform:rotate(0deg); filter:brightness(1); }
+  30%     { transform:rotate(-10deg); filter:brightness(1.6) drop-shadow(0 0 6px gold); }
+  70%     { transform:rotate(10deg); filter:brightness(1.4) drop-shadow(0 0 4px gold); }
+}
+
+/* ⭐ ÉTOILE — pulse brillant */
+.ico-star { animation: star 2s ease-in-out infinite; }
+@keyframes star {
+  0%,100% { transform:scale(1) rotate(0deg); filter:brightness(1); }
+  50%     { transform:scale(1.3) rotate(20deg); filter:brightness(2) drop-shadow(0 0 8px #fcd34d); }
+}
+
+/* ❤️ CŒUR — battement */
+.ico-heart { animation: heart 1.2s ease-in-out infinite; }
+@keyframes heart {
+  0%,100% { transform:scale(1); }
+  14%     { transform:scale(1.2); }
+  28%     { transform:scale(1); }
+  42%     { transform:scale(1.15); }
+  70%     { transform:scale(1); }
+}
+
+/* Override for globe icon on langues */
+.ico-travel.s-ico { animation: globe 6s linear infinite; }
+
+/* ══════════════════════════════════════
+   STICKY QUICK NAV
+══════════════════════════════════════ */
+#quicknav {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+}
+.qn-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 6px 0;
+  transition: all 0.25s cubic-bezier(.4,0,.2,1);
+  text-decoration: none;
+  position: relative;
+}
+.qn-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(245,158,11,0.3);
+  border: 1.5px solid rgba(245,158,11,0.4);
+  flex-shrink: 0;
+  transition: all 0.25s;
+}
+.qn-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(245,158,11,0.5);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(8px);
+  transition: opacity 0.2s, transform 0.2s;
+  pointer-events: none;
+  background: rgba(10,10,10,0.85);
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(245,158,11,0.15);
+}
+.qn-item:hover .qn-label,
+.qn-item.active .qn-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+.qn-item:hover .qn-dot,
+.qn-item.active .qn-dot {
+  background: var(--gold, #f59e0b);
+  border-color: var(--gold, #f59e0b);
+  box-shadow: 0 0 8px rgba(245,158,11,0.6);
+  width: 10px;
+  height: 10px;
+}
+.qn-item.active .qn-dot {
+  background: var(--gold, #f59e0b);
+  box-shadow: 0 0 12px rgba(245,158,11,0.8);
+}
+
+/* Hide on small screens */
+@media(max-width:768px) {
+  #quicknav { display: none; }
+}
 </style>
 </head>
 <body>
 <div class="page">
 
   <!-- ABOUT ME -->
-  <div class="about-card fade-up">
+  <div class="about-card fade-up" id="sec-about">
     <div class="avatar"><img src="data:image/jpeg;base64,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" alt="Céleste Dzalamou"></div>
     <div class="about-text">
       <div class="label">About Me.</div>
@@ -510,8 +641,8 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
   </div>
 
   <!-- SOFTWARE SKILLS -->
-  <div class="section fade-up">
-    <div class="section-title">Outils &amp; Logiciels</div>
+  <div class="section fade-up" id="sec-outils">
+    <div class="section-title"><span class="s-ico ico-gear">⚙️</span> Outils &amp; Logiciels</div>
     <div class="skills-grid">
       <div class="skill-item"><div class="skill-circle tia">TIA</div><div class="skill-label">Siemens<br>TIA Portal</div></div>
       <div class="skill-item"><div class="skill-circle sw">SW</div><div class="skill-label">Solid<br>Works</div></div>
@@ -524,9 +655,9 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
   </div>
 
   <!-- TECH SKILLS + CONTACT -->
-  <div class="two-col fade-up">
+  <div class="two-col fade-up" id="sec-competences">
     <div class="tech-box">
-      <h3>Compétences Techniques</h3>
+      <h3><span class="s-ico ico-flash">⚡</span> Compétences Techniques</h3>
       <div class="tag-group">
         <div class="cat">Automatisme / IHM</div>
         <div class="tech-tags"><span class="tag">Unity Pro</span><span class="tag">Vijeo Design</span><span class="tag">PL7 Pro</span><span class="tag">TIA Portal</span></div>
@@ -546,7 +677,7 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
     </div>
 
     <div class="tech-box">
-      <h3>Contact</h3>
+      <h3><span class="s-ico ico-mail">✉</span> Contact</h3>
       <div class="contact-list">
         <div class="contact-item"><div class="contact-icon"><span class="ico-mail">✉</span></div><span>mercedzalamou9@gmail.com</span></div>
         <div class="contact-item"><div class="contact-icon"><span class="ico-car">🚗</span></div><span>Permis B (en cours)</span></div>
@@ -562,8 +693,8 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
   </div>
 
   <!-- LANGUES -->
-  <div class="section fade-up">
-    <div class="section-title">Langues</div>
+  <div class="section fade-up" id="sec-langues">
+    <div class="section-title"><span class="s-ico ico-travel">🌍</span> Langues</div>
     <div class="lang-row">
       <div class="lang-item">
         <div class="lang-name">🇫🇷 Français</div>
@@ -579,8 +710,8 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
   </div>
 
   <!-- EXPERIENCES -->
-  <div class="section fade-up">
-    <div class="section-title">Expériences Professionnelles</div>
+  <div class="section fade-up" id="sec-experience">
+    <div class="section-title"><span class="s-ico ico-briefcase">💼</span> Expériences Professionnelles</div>
     <div class="timeline">
 
       <!-- EIFFAGE — fibre optique RATP -->
@@ -758,8 +889,8 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
   </div>
 
   <!-- RÉALISATIONS -->
-  <div class="section fade-up" id="realisations">
-    <div class="section-title">Réalisations &amp; Projets</div>
+  <div class="section fade-up" id="sec-projets">
+    <div class="section-title"><span class="s-ico ico-rocket">🚀</span> Réalisations &amp; Projets</div>
     <div class="projects-grid">
 
       <!-- SAMELEC — salle de théâtre paquebot (carte hero pleine largeur) -->
@@ -842,8 +973,8 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
   </div>
 
   <!-- FORMATION + CERTS -->
-  <div class="section fade-up">
-    <div class="section-title">Formation</div>
+  <div class="section fade-up" id="sec-formation">
+    <div class="section-title"><span class="s-ico ico-grad">🎓</span> Formation</div>
     <div class="formation-grid">
       <div class="formation-card">
         <div class="year">2024</div>
@@ -859,7 +990,7 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
       </div>
     </div>
     <div style="margin-top:22px">
-      <div class="section-title" style="font-size:17px;margin-bottom:12px">Certifications &amp; Habilitations</div>
+      <div class="section-title" style="font-size:17px;margin-bottom:12px"><span class="s-ico ico-cert">🏅</span> Certifications &amp; Habilitations</div>
       <div class="certs-row">
         <div class="cert-chip"><div class="dot green"></div>PASI — Validé</div>
         <a class="cert-chip" href="https://drive.google.com/file/d/1g8CGqbslMgGvKLFeOQEV6gkcWO7Qg9zB/view?usp=sharing" target="_blank" rel="noopener" title="Voir le document"><div class="dot green"></div>Habilitation électrique BT <span class="cert-link-ico">↗</span></a>
@@ -873,7 +1004,7 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
   <!-- STRENGTHS + HOBBIES -->
   <div class="two-col fade-up">
     <div class="tech-box">
-      <h3>Points Forts</h3>
+      <h3><span class="s-ico ico-star">⭐</span> Points Forts</h3>
       <div class="strengths-row">
         <div class="strength"><span class="ico ico-handshake">🤝</span>Travail d'équipe</div>
         <div class="strength"><span class="ico ico-target">🎯</span>Rigueur &amp; Fiabilité</div>
@@ -882,7 +1013,7 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
       </div>
     </div>
     <div class="tech-box">
-      <h3>Centres d'intérêt</h3>
+      <h3><span class="s-ico ico-heart">❤️</span> Centres d'intérêt</h3>
       <div class="hobbies-row">
         <div class="hobby"><span class="ico ico-travel">✈️</span>Voyage</div>
         <div class="hobby"><span class="ico ico-sport">🏋️</span>Sport</div>
@@ -894,7 +1025,7 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
   </div>
 
   <!-- FOOTER QUOTE -->
-  <div class="footer-quote fade-up">
+  <div class="footer-quote fade-up" id="sec-contact">
     <div class="quote-icon"><span class="ico-flash">⚡</span></div>
     <p>Rigoureux, réactif et motivé — je m'investis pleinement dans chaque projet pour apporter des solutions techniques fiables. Toujours prêt à relever de nouveaux défis et à contribuer à la réussite des équipes dans le cadre d'une alternance en Automatisme, Systèmes Embarqués ou Robotique.</p>
   </div>
@@ -903,6 +1034,68 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
 <script>
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});},{threshold:0.08});
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+</script>
+
+<!-- STICKY QUICK NAV -->
+<nav id="quicknav">
+  <a class="qn-item active" href="#sec-about">
+    <span class="qn-label">À propos</span>
+    <span class="qn-dot"></span>
+  </a>
+  <a class="qn-item" href="#sec-outils">
+    <span class="qn-label">Outils</span>
+    <span class="qn-dot"></span>
+  </a>
+  <a class="qn-item" href="#sec-competences">
+    <span class="qn-label">Compétences</span>
+    <span class="qn-dot"></span>
+  </a>
+  <a class="qn-item" href="#sec-langues">
+    <span class="qn-label">Langues</span>
+    <span class="qn-dot"></span>
+  </a>
+  <a class="qn-item" href="#sec-experience">
+    <span class="qn-label">Expériences</span>
+    <span class="qn-dot"></span>
+  </a>
+  <a class="qn-item" href="#sec-projets">
+    <span class="qn-label">Projets</span>
+    <span class="qn-dot"></span>
+  </a>
+  <a class="qn-item" href="#sec-formation">
+    <span class="qn-label">Formation</span>
+    <span class="qn-dot"></span>
+  </a>
+  <a class="qn-item" href="#sec-contact">
+    <span class="qn-label">Contact</span>
+    <span class="qn-dot"></span>
+  </a>
+</nav>
+
+<script>
+// Quick nav active state on scroll
+const qnItems = document.querySelectorAll('.qn-item');
+const sections = [
+  document.getElementById('sec-about'),
+  document.getElementById('sec-outils'),
+  document.getElementById('sec-competences'),
+  document.getElementById('sec-langues'),
+  document.getElementById('sec-experience'),
+  document.getElementById('sec-projets'),
+  document.getElementById('sec-formation'),
+  document.getElementById('sec-contact'),
+];
+
+function updateQuickNav() {
+  let current = 0;
+  sections.forEach((sec, i) => {
+    if (sec && window.scrollY >= sec.offsetTop - 200) current = i;
+  });
+  qnItems.forEach((item, i) => item.classList.toggle('active', i === current));
+}
+
+window.addEventListener('scroll', updateQuickNav, { passive: true });
+updateQuickNav();
 </script>
 </body>
 </html>
