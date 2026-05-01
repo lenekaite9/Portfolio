@@ -199,6 +199,87 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
 .proj-link{font-size:11px;color:var(--gold-dim);margin-top:2px;transition:color var(--tr),letter-spacing var(--tr)}
 .proj-card:hover .proj-link{color:var(--gold);letter-spacing:0.5px}
 
+
+/* ── FLAG ANIMATIONS ── */
+.ico-flag-fr{
+  display:inline-block;
+  animation:wave-fr 3s ease-in-out infinite;
+  transform-origin:bottom left;
+}
+@keyframes wave-fr{
+  0%,100%{transform:rotate(0deg) scale(1)}
+  20%{transform:rotate(-8deg) scale(1.15)}
+  40%{transform:rotate(6deg) scale(1.1)}
+  60%{transform:rotate(-4deg) scale(1.05)}
+  80%{transform:rotate(2deg) scale(1)}
+}
+
+.ico-flag-en{
+  display:inline-block;
+  animation:wave-en 3.5s ease-in-out infinite 0.5s;
+  transform-origin:bottom left;
+}
+@keyframes wave-en{
+  0%,100%{transform:rotate(0deg) scale(1)}
+  25%{transform:rotate(10deg) scale(1.18)}
+  50%{transform:rotate(-6deg) scale(1.08)}
+  75%{transform:rotate(4deg) scale(1.04)}
+}
+
+/* ── SCROLL TO TOP BUTTON ── */
+#scroll-top{
+  position:fixed;bottom:88px;right:20px;z-index:150;
+  width:42px;height:42px;border-radius:50%;
+  background:rgba(245,158,11,0.15);
+  border:1px solid rgba(245,158,11,0.3);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:16px;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s,transform .3s,background .2s;
+  backdrop-filter:blur(8px);
+}
+#scroll-top.show{opacity:1;pointer-events:all}
+#scroll-top:hover{background:rgba(245,158,11,0.25);transform:translateY(-2px)}
+
+/* ── READING PROGRESS BAR ── */
+#progress-bar{
+  position:fixed;top:0;left:0;width:0%;height:2px;z-index:500;
+  background:linear-gradient(90deg,var(--gold3),var(--gold));
+  transition:width .1s linear;
+}
+
+/* ── COPY EMAIL TOOLTIP ── */
+.copy-wrap{position:relative;cursor:pointer}
+.copy-wrap .tooltip{
+  position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);
+  background:var(--gold);color:#000;font-size:10px;font-weight:600;
+  padding:4px 10px;border-radius:6px;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity .2s;
+}
+.copy-wrap.copied .tooltip{opacity:1}
+
+/* ── CARD ENTRANCE ANIMATION ── */
+@keyframes card-in{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+.section.fade-up.visible .card,.section.fade-up.visible .tech-box,.section.fade-up.visible .lang-item{
+  animation:card-in .5s var(--ease) both;
+}
+
+/* ── SKILL TAG COUNT BADGE ── */
+.tag-count{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:18px;height:18px;border-radius:50%;
+  background:var(--gold);color:#000;
+  font-size:9px;font-weight:700;margin-left:6px;vertical-align:middle;
+}
+
+/* ── SECTION SEPARATOR ── */
+.sec-separator{
+  text-align:center;padding:8px 0;
+  font-family:'Space Mono',monospace;font-size:9px;
+  letter-spacing:3px;color:rgba(245,158,11,0.25);
+  text-transform:uppercase;
+}
+
 /* FADE UP */
 .fade-up{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
 .fade-up.visible{opacity:1;transform:translateY(0)}
@@ -633,7 +714,6 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
       <h1>Céleste <span>Dzalamou</span></h1>
       <p>Technicien électricien polyvalent avec expérience terrain en électricité industrielle et navale, automatisme et conception mécanique.</p>
       <div class="badge-row">
-        <div class="badge search">EN RECHERCHE D'ALTERNANCE · SEPT. 2026</div>
         <div class="badge lang">🇬🇧 English — Courant</div>
         <div class="badge lang">🇫🇷 Français — Natif</div>
       </div>
@@ -657,7 +737,7 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
   <!-- TECH SKILLS + CONTACT -->
   <div class="two-col fade-up" id="sec-competences">
     <div class="tech-box">
-      <h3><span class="s-ico ico-flash">⚡</span> Compétences Techniques</h3>
+      <h3><span class="s-ico ico-flash">⚡</span> Compétences Techniques<span class="tag-count">8</span></h3>
       <div class="tag-group">
         <div class="cat">Automatisme / IHM</div>
         <div class="tech-tags"><span class="tag">Unity Pro</span><span class="tag">Vijeo Design</span><span class="tag">PL7 Pro</span><span class="tag">TIA Portal</span></div>
@@ -679,14 +759,14 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
     <div class="tech-box">
       <h3><span class="s-ico ico-mail">✉</span> Contact</h3>
       <div class="contact-list">
-        <div class="contact-item"><div class="contact-icon"><span class="ico-mail">✉</span></div><span>mercedzalamou9@gmail.com</span></div>
+        <div class="contact-item copy-wrap copy-email"><div class="contact-icon"><span class="ico-mail">✉</span></div><span>mercedzalamou9@gmail.com</span><div class="tooltip">✓ Copié !</div></div>
         <div class="contact-item"><div class="contact-icon"><span class="ico-car">🚗</span></div><span>Permis B (en cours)</span></div>
       </div>
       <div class="available-badge">
         <div class="ai"><span class="ico-flash">⚡</span></div>
         <div>
-          <strong>Disponible — Alternance</strong>
-          <span>Licence Pro / BUT · Rentrée Septembre 2026</span>
+          <strong>Disponible</strong>
+          <span>Ouverte aux opportunités · Île-de-France</span>
         </div>
       </div>
     </div>
@@ -697,12 +777,12 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
     <div class="section-title"><span class="s-ico ico-travel">🌍</span> Langues</div>
     <div class="lang-row">
       <div class="lang-item">
-        <div class="lang-name">🇫🇷 Français</div>
+        <div class="lang-name"><span class="ico-flag-fr">🇫🇷</span> Français</div>
         <div class="lang-level">Langue natale</div>
         <div class="lang-bar"><div class="lang-bar-fill" style="width:100%"></div></div>
       </div>
       <div class="lang-item">
-        <div class="lang-name">🇬🇧 Anglais</div>
+        <div class="lang-name"><span class="ico-flag-en">🇬🇧</span> Anglais</div>
         <div class="lang-level">Courant — presque bilingue</div>
         <div class="lang-bar"><div class="lang-bar-fill" style="width:82%"></div></div>
       </div>
@@ -888,6 +968,7 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
     </div>
   </div>
 
+  <div class="sec-separator">· · ·</div>
   <!-- RÉALISATIONS -->
   <div class="section fade-up" id="sec-projets">
     <div class="section-title"><span class="s-ico ico-rocket">🚀</span> Réalisations &amp; Projets</div>
@@ -972,6 +1053,7 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
     </div>
   </div>
 
+  <div class="sec-separator">· · ·</div>
   <!-- FORMATION + CERTS -->
   <div class="section fade-up" id="sec-formation">
     <div class="section-title"><span class="s-ico ico-grad">🎓</span> Formation</div>
@@ -1027,7 +1109,7 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
   <!-- FOOTER QUOTE -->
   <div class="footer-quote fade-up" id="sec-contact">
     <div class="quote-icon"><span class="ico-flash">⚡</span></div>
-    <p>Rigoureux, réactif et motivé — je m'investis pleinement dans chaque projet pour apporter des solutions techniques fiables. Toujours prêt à relever de nouveaux défis et à contribuer à la réussite des équipes dans le cadre d'une alternance en Automatisme, Systèmes Embarqués ou Robotique.</p>
+    <p>Rigoureux, réactif et motivé — je m'investis pleinement dans chaque projet pour apporter des solutions techniques fiables. Toujours prêt à relever de nouveaux défis techniques et à contribuer à la réussite des équipes.</p>
   </div>
 
 </div>
@@ -1096,6 +1178,33 @@ function updateQuickNav() {
 
 window.addEventListener('scroll', updateQuickNav, { passive: true });
 updateQuickNav();
+</script>
+
+<!-- PROGRESS BAR -->
+<div id="progress-bar"></div>
+
+<!-- SCROLL TO TOP -->
+<div id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<script>
+// Progress bar
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  const pct=h>0?(window.scrollY/h*100):0;
+  document.getElementById('progress-bar').style.width=pct+'%';
+  // Scroll to top visibility
+  document.getElementById('scroll-top').classList.toggle('show',window.scrollY>400);
+},{passive:true});
+
+// Copy email on click
+document.querySelectorAll('.copy-email').forEach(el=>{
+  el.addEventListener('click',()=>{
+    navigator.clipboard.writeText('mercedzalamou9@gmail.com').then(()=>{
+      el.classList.add('copied');
+      setTimeout(()=>el.classList.remove('copied'),2000);
+    });
+  });
+});
 </script>
 </body>
 </html>
