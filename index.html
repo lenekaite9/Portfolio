@@ -226,6 +226,176 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
   75%{transform:rotate(4deg) scale(1.04)}
 }
 
+
+/* ══════════════════════════════════════
+   BUBBLE POP EFFECT — sections au hover
+══════════════════════════════════════ */
+
+/* Keyframes bulle */
+@keyframes bubble-pop{
+  0%  { transform:scale(1) translateY(0); box-shadow:0 0 0 0 rgba(245,158,11,0); }
+  30% { transform:scale(1.025) translateY(-6px); box-shadow:0 12px 40px rgba(245,158,11,0.18), 0 0 0 6px rgba(245,158,11,0.06); }
+  55% { transform:scale(1.01) translateY(-3px); box-shadow:0 6px 20px rgba(245,158,11,0.12), 0 0 0 3px rgba(245,158,11,0.04); }
+  75% { transform:scale(1.018) translateY(-5px); box-shadow:0 10px 30px rgba(245,158,11,0.14), 0 0 0 5px rgba(245,158,11,0.05); }
+  100%{ transform:scale(1) translateY(0); box-shadow:0 0 0 0 rgba(245,158,11,0); }
+}
+
+@keyframes bubble-ripple{
+  0%  { transform:scale(0.6); opacity:.5; }
+  100%{ transform:scale(1.8); opacity:0; }
+}
+
+/* APPLY BUBBLE TO ALL BIG CARDS */
+.section,
+.about-card,
+.tech-box,
+.lang-item,
+.proj-card,
+.proj-full-card,
+.formation-card,
+.cert-chip,
+.cert-chip a,
+.edu-card,
+.footer-quote,
+.strength,
+.hobby{
+  position:relative;
+  overflow:hidden;
+}
+
+/* The ripple pseudo-element */
+.section::after,
+.about-card::after,
+.tech-box::after,
+.lang-item::after,
+.proj-card::after,
+.proj-full-card::after,
+.formation-card::after,
+.footer-quote::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background:radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(245,158,11,0.07) 0%, transparent 65%);
+  opacity:0;
+  transition:opacity .35s ease;
+  pointer-events:none;
+  z-index:0;
+}
+.section:hover::after,
+.about-card:hover::after,
+.tech-box:hover::after,
+.lang-item:hover::after,
+.proj-card:hover::after,
+.proj-full-card:hover::after,
+.formation-card:hover::after,
+.footer-quote:hover::after{
+  opacity:1;
+}
+
+/* OVERRIDE transitions for bubble feel */
+.section{
+  transition:transform .45s cubic-bezier(.34,1.56,.64,1), border-color .3s, box-shadow .45s !important;
+}
+.section:hover{
+  transform:scale(1.012) translateY(-5px) !important;
+  border-color:rgba(245,158,11,0.5) !important;
+  box-shadow:0 16px 48px rgba(245,158,11,0.12), 0 0 0 1px rgba(245,158,11,0.15) !important;
+}
+.section:active{
+  transform:scale(0.985) translateY(2px) !important;
+  box-shadow:0 4px 16px rgba(245,158,11,0.08) !important;
+  transition:transform .15s, box-shadow .15s !important;
+}
+
+.about-card{
+  transition:transform .45s cubic-bezier(.34,1.56,.64,1), border-color .3s, box-shadow .45s !important;
+}
+.about-card:hover{
+  transform:scale(1.012) translateY(-5px) !important;
+  border-color:rgba(245,158,11,0.55) !important;
+  box-shadow:0 18px 50px rgba(245,158,11,0.14), 0 0 0 1px rgba(245,158,11,0.18) !important;
+}
+.about-card:active{transform:scale(0.985) !important;transition:transform .12s !important}
+
+.tech-box{
+  transition:transform .45s cubic-bezier(.34,1.56,.64,1), border-color .3s, box-shadow .45s !important;
+}
+.tech-box:hover{
+  transform:scale(1.018) translateY(-6px) !important;
+  border-color:rgba(245,158,11,0.5) !important;
+  box-shadow:0 14px 40px rgba(245,158,11,0.12), 0 0 0 1px rgba(245,158,11,0.15) !important;
+}
+.tech-box:active{transform:scale(0.985) !important;transition:transform .12s !important}
+
+.lang-item{
+  transition:transform .45s cubic-bezier(.34,1.56,.64,1), border-color .3s, background .3s, box-shadow .45s !important;
+}
+.lang-item:hover{
+  transform:scale(1.04) translateY(-5px) !important;
+  border-color:rgba(245,158,11,0.5) !important;
+  box-shadow:0 12px 32px rgba(245,158,11,0.14) !important;
+  background:#222 !important;
+}
+.lang-item:active{transform:scale(0.97) !important;transition:transform .12s !important}
+
+.proj-card, .proj-full-card{
+  transition:transform .45s cubic-bezier(.34,1.56,.64,1), border-color .3s, background .3s, box-shadow .45s !important;
+}
+.proj-card:hover,.proj-full-card:hover{
+  transform:scale(1.018) translateY(-6px) !important;
+  border-color:rgba(245,158,11,0.5) !important;
+  box-shadow:0 16px 44px rgba(245,158,11,0.13), 0 0 0 1px rgba(245,158,11,0.16) !important;
+}
+.proj-card:active,.proj-full-card:active{transform:scale(0.985) !important;transition:transform .12s !important}
+
+.formation-card{
+  transition:transform .45s cubic-bezier(.34,1.56,.64,1), border-color .3s, background .3s, box-shadow .45s !important;
+}
+.formation-card:hover{
+  transform:scale(1.03) translateY(-5px) !important;
+  border-color:rgba(245,158,11,0.5) !important;
+  box-shadow:0 12px 32px rgba(245,158,11,0.12) !important;
+}
+.formation-card:active{transform:scale(0.97) !important;transition:transform .12s !important}
+
+.footer-quote{
+  transition:transform .45s cubic-bezier(.34,1.56,.64,1), border-color .3s, box-shadow .45s !important;
+}
+.footer-quote:hover{
+  transform:scale(1.012) translateY(-4px) !important;
+  border-color:rgba(245,158,11,0.45) !important;
+  box-shadow:0 14px 40px rgba(245,158,11,0.1) !important;
+}
+.footer-quote:active{transform:scale(0.99) !important;transition:transform .12s !important}
+
+/* ── RIPPLE ON CLICK ── */
+.ripple-container{position:absolute;inset:0;border-radius:inherit;overflow:hidden;pointer-events:none;z-index:1}
+.ripple-circle{
+  position:absolute;border-radius:50%;
+  background:rgba(245,158,11,0.2);
+  transform:scale(0);
+  animation:ripple-expand .6s ease-out forwards;
+  pointer-events:none;
+}
+@keyframes ripple-expand{
+  to{transform:scale(4);opacity:0}
+}
+
+/* ══ LANGUAGE ICONS UPGRADE ══ */
+.lang-icon-wrap{
+  display:flex;align-items:center;gap:8px;margin-bottom:8px;
+}
+.lang-flag-big{
+  font-size:24px;line-height:1;
+  display:inline-block;
+}
+.ico-flag-fr.big{font-size:24px;animation:wave-fr 3s ease-in-out infinite}
+.ico-flag-en.big{font-size:24px;animation:wave-en 3.5s ease-in-out infinite .5s}
+.lang-label-col{display:flex;flex-direction:column}
+.lang-title{font-size:13px;font-weight:700;color:var(--text)}
+.lang-subtitle{font-size:10px;color:var(--muted);margin-top:1px;letter-spacing:.3px}
+
 /* ── SCROLL TO TOP BUTTON ── */
 #scroll-top{
   position:fixed;bottom:88px;right:20px;z-index:150;
@@ -777,13 +947,23 @@ a.cert-chip:hover .cert-link-ico{opacity:1;transform:translate(2px,-2px)}
     <div class="section-title"><span class="s-ico ico-travel">🌍</span> Langues</div>
     <div class="lang-row">
       <div class="lang-item">
-        <div class="lang-name"><span class="ico-flag-fr">🇫🇷</span> Français</div>
-        <div class="lang-level">Langue natale</div>
+        <div class="lang-icon-wrap">
+          <span class="ico-flag-fr big">🇫🇷</span>
+          <div class="lang-label-col">
+            <div class="lang-title">Français</div>
+            <div class="lang-subtitle">Langue natale · 100%</div>
+          </div>
+        </div>
         <div class="lang-bar"><div class="lang-bar-fill" style="width:100%"></div></div>
       </div>
       <div class="lang-item">
-        <div class="lang-name"><span class="ico-flag-en">🇬🇧</span> Anglais</div>
-        <div class="lang-level">Courant — presque bilingue</div>
+        <div class="lang-icon-wrap">
+          <span class="ico-flag-en big">🇬🇧</span>
+          <div class="lang-label-col">
+            <div class="lang-title">Anglais</div>
+            <div class="lang-subtitle">Courant · 82%</div>
+          </div>
+        </div>
         <div class="lang-bar"><div class="lang-bar-fill" style="width:82%"></div></div>
       </div>
     </div>
@@ -1206,5 +1386,45 @@ document.querySelectorAll('.copy-email').forEach(el=>{
   });
 });
 </script>
+
+<script>
+// ── RIPPLE ON CLICK ──
+const rippleTargets = document.querySelectorAll(
+  '.section, .about-card, .tech-box, .lang-item, .proj-card, .proj-full-card, .formation-card, .footer-quote'
+);
+
+rippleTargets.forEach(el => {
+  // inject ripple container
+  const rc = document.createElement('div');
+  rc.className = 'ripple-container';
+  el.appendChild(rc);
+
+  el.addEventListener('click', e => {
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const size = Math.max(rect.width, rect.height) * 1.5;
+
+    const circle = document.createElement('div');
+    circle.className = 'ripple-circle';
+    circle.style.cssText = `
+      width:${size}px;height:${size}px;
+      left:${x - size/2}px;top:${y - size/2}px;
+    `;
+    rc.appendChild(circle);
+    setTimeout(() => circle.remove(), 700);
+  });
+
+  // Mouse follow radial glow
+  el.addEventListener('mousemove', e => {
+    const rect = el.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
+    const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1);
+    el.style.setProperty('--mx', x + '%');
+    el.style.setProperty('--my', y + '%');
+  });
+});
+</script>
+
 </body>
 </html>
